@@ -7,7 +7,7 @@ namespace CapSharp
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Type</returns>
         public Task<T> SolveAsync();
     }
 }
