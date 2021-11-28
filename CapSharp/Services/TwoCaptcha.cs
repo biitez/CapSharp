@@ -18,17 +18,17 @@ namespace CapSharp.Services
             ApiKey = apiKey;
             CapSharp = capSharp;
 
-            httpClient = new HttpClient();
+            HttpClient = new HttpClient();
         }
 
-        public TwoCaptcha SetCaptchaSettings(TwoCaptchaTypes CaptchaType, 
-            string SiteKey, string SiteUrl, bool CaptchaInvisible = false)
+        public TwoCaptcha SetCaptchaSettings(TwoCaptchaTypes captchaType, 
+            string siteKey, string siteUrl, bool captchaInvisible = false)
         {
-            this.SiteKey = SiteKey;
-            this.SiteUrl = SiteUrl;
+            this.SiteKey = siteKey;
+            this.SiteUrl = siteUrl;
 
-            _CaptchaType = CaptchaType;
-            InvisibleCaptcha = CaptchaInvisible;
+            CaptchaType = captchaType;
+            InvisibleCaptcha = captchaInvisible;
 
             return this;
         }
@@ -37,39 +37,39 @@ namespace CapSharp.Services
         {
             AccessToken = null;
 
-            if (!_CaptchaType.HasValue)
+            if (!CaptchaType.HasValue)
             {
                 return CapSharp.ThrowExceptions
                     ? throw new ArgumentException(nameof(TwoCaptchaTypes))
                     : false;
             }
 
-            var CaptchaFuncs = new Dictionary<TwoCaptchaTypes, Func<(bool, string)>>
+            var captchaFuncs = new Dictionary<TwoCaptchaTypes, Func<(bool, string)>>
             {
                 { TwoCaptchaTypes.reCaptchaV2, ReCaptchaV2 }
             };
 
-            (bool isSuccess, string accessToken) = CaptchaFuncs[_CaptchaType.Value].Invoke();
+            var (isSuccess, accessToken) = captchaFuncs[CaptchaType.Value].Invoke();
 
             AccessToken = accessToken;
 
             return isSuccess;
         }
 
-        private (bool, string) ReCaptchaV2()
+        protected (bool, string) ReCaptchaV2()
         {
             return (true, null);
         }
 
-        public bool TryGetUserBalance(out double Balance)
+        public bool TryGetUserBalance(out double balance)
         {
 
             throw new NotImplementedException();
         }
 
-        public CapSharp CapSharp { get; set; }
-        private HttpClient httpClient { get; set; }
-        private TwoCaptchaTypes? _CaptchaType { get; set; } = null;
+        private CapSharp CapSharp { get; set; }
+        private HttpClient HttpClient { get; set; }
+        private TwoCaptchaTypes? CaptchaType { get; set; } = null;
         private bool InvisibleCaptcha { get; set; } = false;
     }
 }

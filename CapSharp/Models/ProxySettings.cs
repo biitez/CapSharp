@@ -5,17 +5,17 @@ namespace CapSharp.Models
 {
     public class ProxySettings
     {
-        public ProxyProtocol ProxyProtocol { get; private set; } = ProxyProtocol.HTTP;
+        private ProxyProtocol _proxyProtocol = ProxyProtocol.HTTP;
 
         public TimeSpan Timeout = TimeSpan.FromSeconds(1);
 
         public bool BackConnect = false;
 
-        public Credentials ProxyCredentials { get; set; } = null;
+        public Credentials ProxyCredentials = null;
 
         public ProxySettings(ProxyProtocol proxyProtocol)
         {
-            ProxyProtocol = proxyProtocol;
+            _proxyProtocol = proxyProtocol;
         }
     }
 }

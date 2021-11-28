@@ -22,7 +22,7 @@ namespace CapSharp.Tests
             //
             // bool IsSolver = capSharp.TrySolve(out string AccessToken);
 
-            CapSharp capSharp = new CapSharp(UseProxy: true)
+            CapSharp capSharp = new CapSharp(useProxy: true)
             {
                 ThrowExceptions = true,
                 Proxy = new Proxy("1.1.1.1", 1234, new ProxySettings(ProxyProtocol.HTTP)
@@ -36,7 +36,7 @@ namespace CapSharp.Tests
             TwoCaptcha twoCaptcha = new TwoCaptcha(apiKey: "AccountApiKey", capSharp);
 
             twoCaptcha.SetCaptchaSettings(
-                TwoCaptchaTypes.reCaptchaV2, SiteKey: "SITE_KEY", "SITE_URL", CaptchaInvisible: false);
+                TwoCaptchaTypes.reCaptchaV2, siteKey: "SITE_KEY", "SITE_URL", captchaInvisible: false);
 
 
             bool CaptchaIsSuccess = twoCaptcha.TrySolveCaptcha(out var accessToken);

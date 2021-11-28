@@ -7,17 +7,15 @@ namespace CapSharp
     public class CapSharp
     {
         public Proxy Proxy { get; set; }
+        private HttpClient HttpClient { get; }
 
         public bool ThrowExceptions = false;
+        public bool UseProxy = false;
 
-        private HttpClient httpClient { get; }
-        public bool UseProxy { get; private set; }
-
-        public CapSharp( bool UseProxy = false)
+        public CapSharp (bool useProxy = false)
         {
-            this.UseProxy = UseProxy;
-
-            httpClient = new HttpClient();
+            UseProxy = useProxy;
+            HttpClient = new HttpClient();
         }
     }
 }

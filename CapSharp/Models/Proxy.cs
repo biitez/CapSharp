@@ -4,23 +4,22 @@ namespace CapSharp.Models
 {
     public class Proxy
     {
-        public Proxy(string Host, int Port, ProxySettings proxySettings) : this(proxySettings)
+        public Proxy(string host, int port, ProxySettings proxySettings) : this(proxySettings)
         {
-            _host = Host ?? throw new ArgumentNullException(nameof(Host));
+            _host = host ?? throw new ArgumentNullException(nameof(host));
 
-            _port = Port > 65535 
-                ? throw new ArgumentOutOfRangeException(nameof(Port), Port, "Port not supported")
-                : Port;
+            _port = port > 65535 
+                ? throw new ArgumentOutOfRangeException(nameof(port), port, "Port not supported")
+                : port;
         }
 
         private Proxy(ProxySettings proxySettings)
         {
-            _ProxySettings = proxySettings;
+            _proxySettings = proxySettings;
         }
 
-        private ProxySettings _ProxySettings { get; }
-
-        private string _host { get; }
-        private int _port { get; }
+        private readonly ProxySettings _proxySettings;
+        private readonly string _host;
+        private readonly int _port;
     }
 }
