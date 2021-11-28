@@ -1,6 +1,7 @@
 ﻿using CapSharp.Enums;
 using CapSharp.Models;
 using CapSharp.Services;
+using CapSharp.Services.Enums;
 using System;
 
 namespace CapSharp.Tests
@@ -32,10 +33,16 @@ namespace CapSharp.Tests
                 })
             };
 
-            TwoCaptcha twoCaptcha = new TwoCaptcha(ApiKey: "ApiKey", capSharp);
+            TwoCaptcha twoCaptcha = new TwoCaptcha(apiKey: "AccountApiKey", capSharp);
+
+            twoCaptcha.SetCaptchaSettings(
+                TwoCaptchaTypes.reCaptchaV2, SiteKey: "SITE_KEY", "SITE_URL", CaptchaInvisible: false);
+
 
             bool CaptchaIsSuccess = twoCaptcha.TrySolveCaptcha(out var accessToken);
-            bool BalanceIsSuccess = twoCaptcha.TryGetUserBalance(out var Balance);
+            bool BalanceIsSuccess = twoCaptcha.TryGetUserBalance(out var Balance);            
+
+            twoCaptcha.TrySolveCaptcha(out var lol);
         }
     }
 }

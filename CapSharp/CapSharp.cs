@@ -19,17 +19,5 @@ namespace CapSharp
 
             httpClient = new HttpClient();
         }
-
-        public bool TrySolveCaptcha(ICapSharp CaptchaProvider, out string CaptchaToken)
-        {
-            CaptchaToken = null;
-
-            return false;
-        }
-
-        public bool TryGetUserBalance(out double Balance)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

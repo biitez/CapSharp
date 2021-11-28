@@ -11,7 +11,7 @@ namespace CapSharp.Models
 
         public bool BackConnect = false;
 
-        public Credentials ProxyCredentials { get; set; }
+        public Credentials ProxyCredentials { get; set; } = null;
 
         public ProxySettings(ProxyProtocol proxyProtocol)
         {
