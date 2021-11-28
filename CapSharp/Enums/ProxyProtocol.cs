@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CapSharp.Enums
+﻿namespace CapSharp.Enums
 {
-    internal enum ProxyProtocol
+    public enum ProxyProtocol
     {
-        SOCKS4,
-        SOCKS5,
-        HTTP,
-        HTTPS
+        SOCKS4, SOCKS5, HTTP, HTTPS
     }
 }

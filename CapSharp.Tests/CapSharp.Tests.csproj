@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="CapSharp">
+      <HintPath>..\CapSharp\bin\Debug\netstandard2.1\CapSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
