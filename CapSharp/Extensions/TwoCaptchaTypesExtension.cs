@@ -11,7 +11,7 @@ namespace CapSharp.Extensions
         {
             var types = new Dictionary<TwoCaptchaTypes, string>
             {
-                { TwoCaptchaTypes.reCaptchaV2 | TwoCaptchaTypes.reCaptchaV2, "userrecaptcha" },
+                { TwoCaptchaTypes.reCaptchaV2 | TwoCaptchaTypes.reCaptchaV3, "userrecaptcha" },
             };
 
             return types[CaptchaType];

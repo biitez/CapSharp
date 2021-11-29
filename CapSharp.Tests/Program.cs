@@ -25,7 +25,7 @@ namespace CapSharp.Tests
             TwoCaptcha twoCaptcha = new TwoCaptcha(apiKey: "AccountApiKey", capSharp);
 
             twoCaptcha.SetCaptchaSettings(
-                TwoCaptchaTypes.reCaptchaV2, siteKey: "SITE_KEY", "SITE_URL", invisibleCaptcha: false);
+                TwoCaptchaTypes.reCaptchaV2, siteKey: "SITE_KEY", siteUrl: "SITE_URL", invisibleCaptcha: false);
 
             bool CaptchaIsSuccess = twoCaptcha.TrySolveCaptcha(out var accessToken);
 

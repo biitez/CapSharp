@@ -60,19 +60,24 @@ namespace CapSharp.Services
                     : false;
             }
 
-            var captchaFuncs = new Dictionary<TwoCaptchaTypes, Func<(bool, string)>>
-            {
-                { TwoCaptchaTypes.reCaptchaV2, ReCaptchaV2 }
-            };
+            // Desde este metodo, comprobar el tipo de captcha que es
+            // (recaptcha, funcaptcha, hcaptcha, etc)
+            // y enviar la solicitud al metodo SolveCaptchaRequest con
+            // la configuracion necesaria.
 
-            var (isSuccess, accessToken) = captchaFuncs[CaptchaType.Value].Invoke();
+            var (isSuccess, requestId) = SolveCaptchaRequest();
+
+            // Se debe hacer una solicitud enviando el RequestId
+            // cada 5 segundos hasta tener el access Token
+
+            string accessToken = string.Empty;
 
             AccessToken = accessToken;
 
             return isSuccess;
         }
 
-        protected (bool, string) ReCaptchaV2()
+        protected (bool, string) SolveCaptchaRequest()
         {
             Params.Add("googlekey", SiteKey);
             Params.Add("pageurl", SiteUrl);
