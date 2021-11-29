@@ -22,3 +22,13 @@ twoCaptcha.SetCaptchaSettings(
 
 bool CaptchaIsSuccess = twoCaptcha.TrySolveCaptcha(out var accessToken);   
 ```
+
+### Contributions, reports or suggestions
+If you find a problem or have a suggestion inside this library, please let me know by [clicking here](https://github.com/biitez/CapSharp/issues), if you want to improve the code, make it cleaner or even more expensive, create a [pull request](https://github.com/biitez/CapSharp/pulls). 
+
+In case you will contribute in the code, please follow the same code base.
+
+### Credits
+
+- `Telegram: https://t.me/biitez`
+- `Bitcoin Addy: bc1qzz4rghmt6zg0wl6shzaekd59af5znqhr3nxmms`
