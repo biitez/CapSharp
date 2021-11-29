@@ -18,8 +18,8 @@ namespace CapSharp.Models
             _proxySettings = proxySettings;
         }
 
-        private readonly ProxySettings _proxySettings;
-        private readonly string _host;
-        private readonly int _port;
+        public readonly ProxySettings _proxySettings = null;
+        public readonly string _host = null;
+        public readonly int? _port = null;
     }
 }

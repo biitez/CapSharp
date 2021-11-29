@@ -10,21 +10,10 @@ namespace CapSharp.Tests
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            // Esperado:
-            //
-            // ICapSharp capSharp = new TwoCaptcha(ApiKey: "ApiKey", UseProxy: true)
-            // {
-            //    ThrowExceptions = false,
-            //    UseProxy = true
-            // };
-            //
-            // bool IsSolver = capSharp.TrySolve(out string AccessToken);
 
             CapSharp capSharp = new CapSharp(useProxy: true)
             {
-                ThrowExceptions = true,
+                ThrowExceptions = false,
                 Proxy = new Proxy("1.1.1.1", 1234, new ProxySettings(ProxyProtocol.HTTP)
                 {
                     BackConnect = true,
@@ -36,13 +25,15 @@ namespace CapSharp.Tests
             TwoCaptcha twoCaptcha = new TwoCaptcha(apiKey: "AccountApiKey", capSharp);
 
             twoCaptcha.SetCaptchaSettings(
-                TwoCaptchaTypes.reCaptchaV2, siteKey: "SITE_KEY", "SITE_URL", captchaInvisible: false);
-
+                TwoCaptchaTypes.reCaptchaV2, siteKey: "SITE_KEY", "SITE_URL", invisibleCaptcha: false);
 
             bool CaptchaIsSuccess = twoCaptcha.TrySolveCaptcha(out var accessToken);
-            bool BalanceIsSuccess = twoCaptcha.TryGetUserBalance(out var Balance);            
 
-            twoCaptcha.TrySolveCaptcha(out var lol);
+            Console.WriteLine(CaptchaIsSuccess);
+            Console.WriteLine(accessToken);
+
+            Console.ReadLine();
+
         }
     }
 }

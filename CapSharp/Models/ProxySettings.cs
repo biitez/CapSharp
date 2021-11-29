@@ -5,7 +5,7 @@ namespace CapSharp.Models
 {
     public class ProxySettings
     {
-        private ProxyProtocol _proxyProtocol = ProxyProtocol.HTTP;
+        public ProxyProtocol _proxyProtocol = ProxyProtocol.HTTP;
 
         public TimeSpan Timeout = TimeSpan.FromSeconds(1);
 
