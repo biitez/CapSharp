@@ -4,6 +4,14 @@ namespace CapSharp.Models
 {
     public class Proxy
     {
+        /// <summary>
+        /// Configure your proxy
+        /// </summary>
+        /// <param name="host">Proxy Host / Ip Address</param>
+        /// <param name="port">Proxy Port</param>
+        /// <param name="proxySettings"><see cref="ProxySettings"/></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public Proxy(string host, int port, ProxySettings proxySettings) : this(proxySettings)
         {
             _host = host ?? throw new ArgumentNullException(nameof(host));
@@ -18,8 +26,8 @@ namespace CapSharp.Models
             _proxySettings = proxySettings;
         }
 
-        public readonly ProxySettings _proxySettings = null;
-        public readonly string _host = null;
-        public readonly int? _port = null;
+        public ProxySettings _proxySettings { get; } = null;
+        public string _host { get; } = null;
+        public int? _port { get; } = null;
     }
 }

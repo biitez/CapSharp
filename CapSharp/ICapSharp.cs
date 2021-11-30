@@ -1,12 +1,9 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace CapSharp
+﻿namespace CapSharp
 {
     public interface ICapSharp
     {
         /// <summary>
-        /// 
+        /// Try to solve the captcha
         /// </summary>
         /// <param name="AccessToken"></param>
         /// <returns></returns>
@@ -17,6 +14,6 @@ namespace CapSharp
         /// </summary>
         /// <param name="Balance">Balance</param>
         /// <returns>Returns <see cref="false"/> if a problem occurred, if throwing exceptions is enabled, an exception with error details will throw. If everything is correct, returns <see cref="true"/>. </returns>
-        public bool TryGetUserBalance(out double Balance);
+        public bool TryGetUserBalance(out string Balance);
     }
 }

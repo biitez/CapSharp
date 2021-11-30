@@ -11,12 +11,17 @@ namespace CapSharp.Handlers
     public class HttpClientHandler
     {
         private readonly HttpClient _httpClient;
-        private readonly Uri apiBase;
+        private Uri apiBase;
 
         public HttpClientHandler(Uri ApiBase, HttpClient httpClient = null)
         {
             apiBase = ApiBase;
             _httpClient = httpClient ?? new HttpClient();
+        }
+
+        public void SetNewUri(Uri ApiBase)
+        {
+            apiBase = ApiBase;
         }
 
         public async Task<T> GetResponseJsonAsync<T>(
@@ -45,6 +50,21 @@ namespace CapSharp.Handlers
             {
                 return default;
             }
+
+            //if (!WaitingForJson)
+            //{
+            //  https://stackoverflow.com/a/21807786 <3
+
+            //  return (T)Convert
+            //    .ChangeType(await httpResponseMessage.Content.ReadAsStringAsync()
+            //    .ConfigureAwait(false), typeof(T));
+            //}
+
+            /*
+             * This is where I remember that the parameter 'json=1' existed 
+             * to be able to convert the response to Json and that the
+             * above was just wasting time lmao
+             */
 
             return await httpResponseMessage.DeserializeJsonAsync<T>().ConfigureAwait(false);
         }
