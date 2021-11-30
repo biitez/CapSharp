@@ -54,6 +54,8 @@ TwoCaptcha twoCaptcha = new TwoCaptcha(apiKey: "YOUR_API_KEY", capSharp: capShar
 
 #### Two Captcha Types:
 
+Captcha based on images not available at the moment
+
 - [ReCaptcha V2, reCaptcha V3, reCaptcha Invisible and reCaptcha Enterprise](#google-captcha)
 - [hCaptcha](#hcaptcha)
 - [Arkose Labs - FunCaptcha](#funcaptcha)
